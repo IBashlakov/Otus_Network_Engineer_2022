@@ -27,6 +27,10 @@
 
 ![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab01/S2_config.png?raw=true)
 
+Настройка субинтерфейсов на маршрутизаторе R1:
+
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab01/R1_subinterfaces_config.png?raw=true)
+
 Конфигурация маршрутизатора R1:
 
 ![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab01/R1_config.png?raw=true)
