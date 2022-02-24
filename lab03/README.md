@@ -125,7 +125,7 @@ R2(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.1
 
 Выполним проверку маршрутизации:
 
-пикча!
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ICMP_test.png?raw=true)
 
 
 Произведем настройку интерфейсов на S1:
@@ -160,7 +160,7 @@ S1(config-if)#switchport trunk allowed vlan 100,200,1000
 S1(config-if)#end
 ```
 
-пикча!
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/S1_VLAN.png?raw=true)
 
 И на S2:
 
@@ -196,5 +196,5 @@ R1(dhcp-config)#default-router 192.168.1.97
 R1(dhcp-config)#lease 2 12 30
 R1(dhcp-config)#end
 ```
-пикча!
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/DHCP_POOLS.png?raw=true)
 
