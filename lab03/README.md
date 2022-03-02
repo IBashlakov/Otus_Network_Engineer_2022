@@ -128,7 +128,7 @@ R2(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.1
 ![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ICMP_test.png?raw=true)
 
 
-Произведем настройку Vlan на S1:
+Произведем настройку интерфейсов и шлюза по умолчанию на S1:
 
 ```
 S1(config)#interface Vlan200
@@ -158,6 +158,9 @@ S1(config-if)#switchport mode trunk
 S1(config-if)#switchport trunk native vlan 1000
 S1(config-if)#switchport trunk allowed vlan 100,200,1000
 S1(config-if)#end
+S1#conf t
+S1(config)#ip default-gateway 192.168.1.65
+
 ```
 
 ![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/S1_VLAN.png?raw=true)
@@ -179,6 +182,8 @@ S2(config-if)#end
 S2(config)#interface range Et0/0, Et0/2
 S2(config-if-range)#shutdown
 S2(config)#end
+S2#conf t
+S2(config)#ip default-gateway 192.168.1.97
 ```
 ### Часть 2. Настройка DHCPv4 
 
@@ -188,20 +193,30 @@ S2(config)#end
 ```
 R1#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
-R1(config)#ip dhcp excluded-address 192.168.1.1 192.168.1.62
+R1(config)#ip dhcp excluded-address 192.168.1.1 192.168.1.5
+R1(config)#ip dhcp excluded-address 192.168.1.65 192.168.1.69
+R1(config)#ip dhcp excluded-address 192.168.1.97 192.168.1.101
 R1(config)#ip dhcp pool Subnet A
 R1(dhcp-config)#network 192.168.1.0 255.255.255.192
 R1(dhcp-config)#default-router 192.168.1.1
+R1(dhcp-config)#domain-name ccna-lab.com
 R1(dhcp-config)#lease 2 12 30
 R1(dhcp-config)#end
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#ip dhcp pool SUBNET-B
+R1(dhcp-config)#network 192.168.1.64 255.255.255.224
+R1(dhcp-config)#default-router 192.168.1.65
+R1(dhcp-config)#domain-name ccna-lab.com
+R1(dhcp-config)#lease 2 12 30
 R1#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
 R1(config)#ip dhcp excluded-address 192.168.1.97 192.168.1.110
 R1(config)#ip dhcp pool Subnet C
 R1(dhcp-config)#network 192.168.1.96 255.255.255.240
 R1(dhcp-config)#default-router 192.168.1.97
+R1(dhcp-config)#domain-name ccna-lab.com
 R1(dhcp-config)#lease 2 12 30
 R1(dhcp-config)#end
 ```
-![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/DHCP_POOLS.png?raw=true)
 
