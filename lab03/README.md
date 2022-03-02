@@ -128,7 +128,7 @@ R2(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.1
 ![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ICMP_test.png?raw=true)
 
 
-Произведем настройку интерфейсов на S1:
+Произведем настройку Vlan на S1:
 
 ```
 S1(config)#interface Vlan200
@@ -165,6 +165,13 @@ S1(config-if)#end
 И на S2:
 
 ```
+S2(config)#vlan 1
+S2(config-vlan)#name Management
+S2(config-vlan)#end
+S2(config)#interface Et0/3
+S2(config-if)#switchport mode access
+S2(config-if)#switchport access vlan 1
+S2(config-if)#end
 S2(config)#interface Vlan1
 S2(config-if)#ip address 192.168.1.98 255.255.255.240
 S2(config-if)#no shutdown
@@ -189,7 +196,7 @@ R1(dhcp-config)#lease 2 12 30
 R1(dhcp-config)#end
 R1#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
-R1(config)#ip dhcp excluded-addres 192.168.1.97 192.168.1.110
+R1(config)#ip dhcp excluded-address 192.168.1.97 192.168.1.110
 R1(config)#ip dhcp pool Subnet C
 R1(dhcp-config)#network 192.168.1.96 255.255.255.240
 R1(dhcp-config)#default-router 192.168.1.97
