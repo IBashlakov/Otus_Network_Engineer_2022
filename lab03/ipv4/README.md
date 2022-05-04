@@ -10,7 +10,7 @@
 
 **Топология сети:**
 
-![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/Topology.png?raw=true)
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv4/Topology.png?raw=true)
 
 ## Раздел 1. DHCPv4
 
@@ -125,7 +125,7 @@ R2(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.1
 
 Выполним проверку маршрутизации:
 
-![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ICMP_test.png?raw=true)
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv4/ICMP_test.png?raw=true)
 
 
 Произведем настройку интерфейсов и шлюза по умолчанию на S1:
@@ -163,7 +163,7 @@ S1(config)#ip default-gateway 192.168.1.65
 
 ```
 
-![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/S1_VLAN.png?raw=true)
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv4/S1_VLAN.png?raw=true)
 
 И на S2:
 
@@ -223,21 +223,21 @@ R1(dhcp-config)#domain-name ccna-lab.com
 R1(dhcp-config)#lease 2 12 30
 R1(dhcp-config)#end
 ```
-![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/R1_DHCP_pools.png?raw=true)
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv4/R1_DHCP_pools.png?raw=true)
 
 ### 2.1
 
 Выполним запрос на получение ip-адреса на хосте PC-A:
 
-![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ip_dhcp_pc-a.png?raw=true)
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv4/ip_dhcp_pc-a.png?raw=true)
 
 Затем отобразим таблицу DHCP на R1:
 
-![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/bin1.png?raw=true)
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv4/bin1.png?raw=true)
 
 Проверим сетеыую доступность интерфейса R2 Et0/1:
 
-![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/icmp_test_pc-a.png?raw=true)
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv4/icmp_test_pc-a.png?raw=true)
 
 ### 2.2 Настройка DHCP-Relay
 
@@ -253,9 +253,9 @@ R2(config-if)#end
 
 Запросим ip-адрес на хосте PC-B:
 
-![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ip_dhcp_pc-b.png?raw=true)
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv4/ip_dhcp_pc-b.png?raw=true)
 
 Проверим сетевую доступность интерфейса R1 Et0/1:
 
-![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/icmp_test2_pc-a.png?raw=true)
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv4/icmp_test2_pc-a.png?raw=true)
 
