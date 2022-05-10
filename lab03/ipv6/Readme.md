@@ -25,7 +25,7 @@
 |PC-B| Eth0 | DHCP |
 
 
-Базовая настройка маршрутизаторов и коммутаторов аналогична первой части работы "*LINK*"
+Базовая настройка маршрутизаторов и коммутаторов аналогична [первой части работы](https://github.com/IBashlakov/Otus_Network_Engineer_2022/tree/main/lab03/ipv4) 
 
 ### **Настройка интерфейсов и маршрутизации**
 
@@ -68,7 +68,7 @@ R1(config)#ipv6 route ::/0 2001:db8:acad:2::1
 
 Затем произведем проверку сетевой связности и маршрутизации, отправив ICMP-запрос на интерфейс Et0/1 маршрутизатора R2:
 
-!!пикча1
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv6/ICMP%20test%201.png?raw=true)
 
 Проверим конфигурацию IPv6-адреса на хосте PC-A. Т.к. эмулятор Eve-NG у меня развернут в Яндекс.Облаке и есть трудности с запуском quemu-образов, в качестве хоста я использовал маршрутизатор:
 
@@ -79,7 +79,7 @@ Router(config-if)# ipv6 address autoconfig
 Router(config-if)# ipv6 enable
 ```
 
-!!пикча2
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv6/PC-A%20ipv6%20interface.png?raw=true)
 
 Как можно видеть адрес присвоен из сети 2001:db8:1::/64. Часть адреса с идентификатором хоста сгенерирована на основе mac-адреса устройства (EUI-64).
 
@@ -98,11 +98,11 @@ R1(config-if)#ipv6 dhcp server R1-STATELESS
 ```
 На PC-A выполним запрос к DNS серверу
 
-!! пикча
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv6/PC-A%20dns.png?raw=true)
 
 А так же проверим доступность интерфейса Et0/0 маршрутизатора R2
 
-!! пикча
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv6/PC-A%20ICMP%20test2.png?raw=true)
 
 Затем произведем настройку DHCP сервера с сохранением состояния на R1:
 
@@ -122,8 +122,11 @@ R1(config)# interface Et0/0
 R1(config-if)# ipv6 dhcp server R2-STATEFUL   
 ```
 
-!!пикча
-!!пикча
+Проверим получение IPv6-адреса хостом PC-B:
+
+![!!пикча](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv6/PC-B%20icmp%20test.png?raw=true)
+
+![](https://github.com/IBashlakov/Otus_Network_Engineer_2022/blob/main/lab03/ipv6/PC-B%20ipv6%20interface.png?raw=true)
 
 Произведем настройку ретрансляции на R2:
 
